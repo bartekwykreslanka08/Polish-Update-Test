@@ -1,0 +1,497 @@
+<div id="quiz-app">
+    
+    <div id="quiz-start-screen" style="text-align: center; padding: 40px 20px;">
+        <h2 style="font-size: 26px; margin-bottom: 15px;">Quiz o Polsce</h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px;">Przed Tobą 30 pytań z wiedzy ogólnej. Na każde pytanie masz równe <strong>20 sekund</strong>.</p>
+        <button id="start-quiz-btn" class="tab-trigger" style="margin: 0 auto;">Rozpocznij Quiz ⏱️</button>
+    </div>
+    
+    <div id="quiz-question-screen" style="display:none;">
+        <div class="quiz-header-bar" style="margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span id="quiz-progress" style="font-weight: bold;">Pytanie 1/30</span>
+            </div>
+            <!-- Pasek czasu -->
+            <div style="width: 100%; height: 12px; background: #e0e0e0; border-radius: 6px; overflow: hidden;">
+                <div id="quiz-timer-bar" style="height: 100%; width: 100%; background-color: #4CAF50; transition: width 1s linear, background-color 0.5s;"></div>
+            </div>
+        </div>
+        
+        <div id="questions-container">
+            <div class="quiz-question-item update-item" data-correct="0">
+                <div class="update-title">1. Jaka bitwa z 1605 roku jest uważana za jedno z największych zwycięstw polskiej husarii?</div>
+                <div class="thematic-image" style="background: url('quiz1.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Kircholm</button>
+                    <button class="quiz-btn" data-index="1">B) Kłuszyn</button>
+                    <button class="quiz-btn" data-index="2">C) Wiedeń</button>
+                    <button class="quiz-btn" data-index="3">D) Grunwald</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">2. Jakie jest najstarsze miasto w Polsce (według praw miejskich nadanych w 1211 r.)?</div>
+                <div class="thematic-image" style="background: url('quiz2.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Kraków</button>
+                    <button class="quiz-btn" data-index="1">B) Złotoryja</button>
+                    <button class="quiz-btn" data-index="2">C) Gniezno</button>
+                    <button class="quiz-btn" data-index="3">D) Kalisz</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="0" style="display:none;">
+                <div class="update-title">3. Jaki ssak jest największym drapieżnikiem żyjącym na wolności w Polsce?</div>
+                <div class="thematic-image" style="background: url('quiz3.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Niedźwiedź brunatny</button>
+                    <button class="quiz-btn" data-index="1">B) Wilk</button>
+                    <button class="quiz-btn" data-index="2">C) Ryś</button>
+                    <button class="quiz-btn" data-index="3">D) Rosomak</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">4. Który wybitny polski poeta pokolenia Kolumbów używał pseudonimu "Jan Bugaj"?</div>
+                <div class="thematic-image" style="background: url('quiz4.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Bolesław Prus</button>
+                    <button class="quiz-btn" data-index="1">B) Krzysztof Kamil Baczyński</button>
+                    <button class="quiz-btn" data-index="2">C) Henryk Sienkiewicz</button>
+                    <button class="quiz-btn" data-index="3">D) Czesław Miłosz</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">5. Kto jest polskim twórcą pierwszej skutecznej szczepionki przeciwko tyfusowi plamistemu?</div>
+                <div class="thematic-image" style="background: url('quiz5.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Ludwik Hirszfeld</button>
+                    <button class="quiz-btn" data-index="1">B) Rudolf Weigl</button>
+                    <button class="quiz-btn" data-index="2">C) Kazimierz Funk</button>
+                    <button class="quiz-btn" data-index="3">D) Hilary Koprowski</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="2" style="display:none;">
+                <div class="update-title">6. Z iloma państwami graniczy obecnie Polska?</div>
+                <div class="thematic-image" style="background: url('quiz6.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Z 5 państwami</button>
+                    <button class="quiz-btn" data-index="1">B) Z 6 państwami</button>
+                    <button class="quiz-btn" data-index="2">C) Z 7 państwami</button>
+                    <button class="quiz-btn" data-index="3">D) Z 8 państwami</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">7. Pierwszy polski film pełnometrażowy, który zdobył Oscara za najlepszy film nieanglojęzyczny to:</div>
+                <div class="thematic-image" style="background: url('quiz7.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Noce i dnie</button>
+                    <button class="quiz-btn" data-index="1">B) Ida</button>
+                    <button class="quiz-btn" data-index="2">C) Zimna wojna</button>
+                    <button class="quiz-btn" data-index="3">D) Kanał</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">8. Tradycyjny polski wypiek – Sękacz – to produkt wywodzący się kulturowo i historycznie z:</div>
+                <div class="thematic-image" style="background: url('quiz8.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Śląska</button>
+                    <button class="quiz-btn" data-index="1">B) Suwalszczyzny</button>
+                    <button class="quiz-btn" data-index="2">C) Podhala</button>
+                    <button class="quiz-btn" data-index="3">D) Kaszub</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="0" style="display:none;">
+                <div class="update-title">9. Jaka jest (według rejestru TERYT) najdłuższa nazwa miejscowości w Polsce?</div>
+                <div class="thematic-image" style="background: url('quiz9.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Sobienie Kiełczewskie Pierwsze</button>
+                    <button class="quiz-btn" data-index="1">B) Przedmieście Szczebrzeszyńskie</button>
+                    <button class="quiz-btn" data-index="2">C) Jazgarzewszczyzna</button>
+                    <button class="quiz-btn" data-index="3">D) Szymankowszczyzna</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">10. W którym roku uchwalono Konstytucję 3 Maja?</div>
+                <div class="thematic-image" style="background: url('quiz10.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) W 1789 roku</button>
+                    <button class="quiz-btn" data-index="1">B) W 1791 roku</button>
+                    <button class="quiz-btn" data-index="2">C) W 1793 roku</button>
+                    <button class="quiz-btn" data-index="3">D) W 1795 roku</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="0" style="display:none;">
+                <div class="update-title">11. Gdzie znajduje się oficjalny geometryczny środek Polski?</div>
+                <div class="thematic-image" style="background: url('quiz11.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) W Piątku (woj. łódzkie)</button>
+                    <button class="quiz-btn" data-index="1">B) W Łodzi</button>
+                    <button class="quiz-btn" data-index="2">C) W Warszawie</button>
+                    <button class="quiz-btn" data-index="3">D) W Kutnie</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="0" style="display:none;">
+                <div class="update-title">12. Kto jako pierwszy Polak zdobył złoty medal zimowych igrzysk olimpijskich?</div>
+                <div class="thematic-image" style="background: url('quiz12.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Wojciech Fortuna</button>
+                    <button class="quiz-btn" data-index="1">B) Adam Małysz</button>
+                    <button class="quiz-btn" data-index="2">C) Kamil Stoch</button>
+                    <button class="quiz-btn" data-index="3">D) Justyna Kowalczyk</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="0" style="display:none;">
+                <div class="update-title">13. Jak miał na imię ojciec (grany przez Tomasza Karolaka) z serialu "Rodzinka.pl"?</div>
+                <div class="thematic-image" style="background: url('quiz13.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Ludwik</button>
+                    <button class="quiz-btn" data-index="1">B) Marek</button>
+                    <button class="quiz-btn" data-index="2">C) Tomasz</button>
+                    <button class="quiz-btn" data-index="3">D) Jan</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">14. Jak nazywał się główny słowiański bóg burzy i piorunów?</div>
+                <div class="thematic-image" style="background: url('quiz14.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Świętowit</button>
+                    <button class="quiz-btn" data-index="1">B) Perun</button>
+                    <button class="quiz-btn" data-index="2">C) Weles</button>
+                    <button class="quiz-btn" data-index="3">D) Swaróg</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="2" style="display:none;">
+                <div class="update-title">15. Jaki polski zespół nagrał legendarny przebój "Jolka, Jolka pamiętasz"?</div>
+                <div class="thematic-image" style="background: url('quiz15.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Lady Pank</button>
+                    <button class="quiz-btn" data-index="1">B) Perfect</button>
+                    <button class="quiz-btn" data-index="2">C) Budka Suflera</button>
+                    <button class="quiz-btn" data-index="3">D) Dżem</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="0" style="display:none;">
+                <div class="update-title">16. Kazimierz Funk, wybitny polski biochemik, jest najbardziej znany jako odkrywca:</div>
+                <div class="thematic-image" style="background: url('quiz16.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Witamin</button>
+                    <button class="quiz-btn" data-index="1">B) Promieniotwórczości</button>
+                    <button class="quiz-btn" data-index="2">C) Grup krwi</button>
+                    <button class="quiz-btn" data-index="3">D) Insuliny</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="2" style="display:none;">
+                <div class="update-title">17. W 1773 roku Polska stała się pierwszym państwem na świecie, które powołało:</div>
+                <div class="thematic-image" style="background: url('quiz17.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Urząd pocztowy</button>
+                    <button class="quiz-btn" data-index="1">B) Powszechne prawo wyborcze dla kobiet</button>
+                    <button class="quiz-btn" data-index="2">C) Ministerstwo edukacji (Komisję Edukacji Narodowej)</button>
+                    <button class="quiz-btn" data-index="3">D) Konstytucyjny podział władz</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">18. Jaki procent powierzchni Polski zajmują obecnie lasy (Lesistość)?</div>
+                <div class="thematic-image" style="background: url('quiz18.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Ok. 20%</button>
+                    <button class="quiz-btn" data-index="1">B) Ok. 30%</button>
+                    <button class="quiz-btn" data-index="2">C) Ok. 40%</button>
+                    <button class="quiz-btn" data-index="3">D) Ok. 50%</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">19. Kto jest jedynym polskim kierowcą, który kiedykolwiek wystartował i wygrał wyścig Formuły 1?</div>
+                <div class="thematic-image" style="background: url('quiz19.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Krzysztof Hołowczyc</button>
+                    <button class="quiz-btn" data-index="1">B) Robert Kubica</button>
+                    <button class="quiz-btn" data-index="2">C) Michał Sołowow</button>
+                    <button class="quiz-btn" data-index="3">D) Maciej Szczepaniak</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">20. Który polski pisarz otrzymał Literacką Nagrodę Nobla w 1924 roku za epos "Chłopi"?</div>
+                <div class="thematic-image" style="background: url('quiz20.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Henryk Sienkiewicz</button>
+                    <button class="quiz-btn" data-index="1">B) Władysław Reymont</button>
+                    <button class="quiz-btn" data-index="2">C) Czesław Miłosz</button>
+                    <button class="quiz-btn" data-index="3">D) Wisława Szymborska</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="0" style="display:none;">
+                <div class="update-title">21. Polski wybitny pianista, który jednocześnie był genialnym wynalazcą (m.in. wycieraczek samochodowych i spinaczy), to:</div>
+                <div class="thematic-image" style="background: url('quiz21.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Józef Hofmann</button>
+                    <button class="quiz-btn" data-index="1">B) Ignacy Paderewski</button>
+                    <button class="quiz-btn" data-index="2">C) Jan Szczepanik</button>
+                    <button class="quiz-btn" data-index="3">D) Jacek Karpiński</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">22. Jak nazywa się najgłębsze jezioro na terytorium Polski (ponad 108 m głębokości)?</div>
+                <div class="thematic-image" style="background: url('quiz22.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Śniardwy</button>
+                    <button class="quiz-btn" data-index="1">B) Hańcza</button>
+                    <button class="quiz-btn" data-index="2">C) Mamry</button>
+                    <button class="quiz-btn" data-index="3">D) Gopło</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="2" style="display:none;">
+                <div class="update-title">23. Z którym z sąsiednich państw Polska ma najdłuższą granicę lądową?</div>
+                <div class="thematic-image" style="background: url('quiz23.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Z Niemcami</button>
+                    <button class="quiz-btn" data-index="1">B) Z Ukrainą</button>
+                    <button class="quiz-btn" data-index="2">C) Z Czechami</button>
+                    <button class="quiz-btn" data-index="3">D) Ze Słowacją</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">24. Pierwszy polski sztuczny satelita naukowy, wyniesiony na orbitę w 2013 roku (z serii BRITE), otrzymał imię:</div>
+                <div class="thematic-image" style="background: url('quiz24.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Heweliusz</button>
+                    <button class="quiz-btn" data-index="1">B) Lem</button>
+                    <button class="quiz-btn" data-index="2">C) Kopernik</button>
+                    <button class="quiz-btn" data-index="3">D) Twardowski</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="0" style="display:none;">
+                <div class="update-title">25. Krew jakiego zwierzęcia jest niezbędnym składnikiem staropolskiej, tradycyjnej zupy – czerniny?</div>
+                <div class="thematic-image" style="background: url('quiz25.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Kaczki</button>
+                    <button class="quiz-btn" data-index="1">B) Świni</button>
+                    <button class="quiz-btn" data-index="2">C) Kury</button>
+                    <button class="quiz-btn" data-index="3">D) Owcy</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">26. W jakim polskim mieście położony jest monumentalny Zamek Książ?</div>
+                <div class="thematic-image" style="background: url('quiz26.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) We Wrocławiu</button>
+                    <button class="quiz-btn" data-index="1">B) W Wałbrzychu</button>
+                    <button class="quiz-btn" data-index="2">C) W Jeleniej Górze</button>
+                    <button class="quiz-btn" data-index="3">D) W Malborku</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="2" style="display:none;">
+                <div class="update-title">27. Który z wymienionych gatunków węży występujących na terenie Polski jest jadowity?</div>
+                <div class="thematic-image" style="background: url('quiz27.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Zaskroniec zwyczajny</button>
+                    <button class="quiz-btn" data-index="1">B) Gniewosz plamisty</button>
+                    <button class="quiz-btn" data-index="2">C) Żmija zygzakowata</button>
+                    <button class="quiz-btn" data-index="3">D) Wąż Eskulapa</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="1" style="display:none;">
+                <div class="update-title">28. Jaki słynny polski malarz historyczny stworzył potężne płótno "Bitwa pod Grunwaldem"?</div>
+                <div class="thematic-image" style="background: url('quiz28.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Jacek Malczewski</button>
+                    <button class="quiz-btn" data-index="1">B) Jan Matejko</button>
+                    <button class="quiz-btn" data-index="2">C) Stanisław Wyspiański</button>
+                    <button class="quiz-btn" data-index="3">D) Józef Chełmoński</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="0" style="display:none;">
+                <div class="update-title">29. Na jakim kontynencie (lub archipelagu) stacjonuje Polska Stacja Antarktyczna im. Henryka Arctowskiego?</div>
+                <div class="thematic-image" style="background: url('quiz29.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Na Antarktydzie (Szetlandy Pd.)</button>
+                    <button class="quiz-btn" data-index="1">B) W Arktyce (Spitsbergen)</button>
+                    <button class="quiz-btn" data-index="2">C) Na Grenlandii</button>
+                    <button class="quiz-btn" data-index="3">D) Na Alasce</button>
+                </div>
+            </div>
+
+            <div class="quiz-question-item update-item" data-correct="2" style="display:none;">
+                <div class="update-title">30. Jaki jest najwyższy szczyt Bieszczad leżący w granicach Polski (1346 m n.p.m.)?</div>
+                <div class="thematic-image" style="background: url('quiz30.png') center/cover no-repeat;"></div>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-index="0">A) Smerek</button>
+                    <button class="quiz-btn" data-index="1">B) Halicz</button>
+                    <button class="quiz-btn" data-index="2">C) Tarnica</button>
+                    <button class="quiz-btn" data-index="3">D) Połonina Caryńska</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz-end-screen" style="display:none; text-align: center; padding: 40px 20px;">
+        <h2 style="font-size: 28px; margin-bottom: 10px;">Koniec Quizu!</h2>
+        <p style="font-size: 18px; color: var(--text-muted);">Twój wynik to: <strong style="color: var(--primary-color); font-size: 24px;"><span id="quiz-score">0</span>/30</strong></p>
+        <button id="retry-quiz-btn" class="tab-trigger" style="margin: 30px auto;">Spróbuj ponownie 🔄</button>
+    </div>
+
+    <!-- Skrypt obsługujący pasek czasu, losowanie i mechanikę quizu -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const startBtn = document.getElementById("start-quiz-btn");
+        const retryBtn = document.getElementById("retry-quiz-btn");
+        const startScreen = document.getElementById("quiz-start-screen");
+        const questionScreen = document.getElementById("quiz-question-screen");
+        const endScreen = document.getElementById("quiz-end-screen");
+        const progressText = document.getElementById("quiz-progress");
+        const timerBar = document.getElementById("quiz-timer-bar");
+        const scoreText = document.getElementById("quiz-score");
+        const questionsContainer = document.getElementById("questions-container");
+        
+        let questions = Array.from(document.querySelectorAll(".quiz-question-item"));
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timeLeft = 20;
+        let timerInterval;
+
+        // Funkcja do losowania tablicy (Fisher-Yates)
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function startQuiz() {
+            startScreen.style.display = "none";
+            endScreen.style.display = "none";
+            questionScreen.style.display = "block";
+            
+            score = 0;
+            currentQuestionIndex = 0;
+            
+            // Tasujemy pytania
+            shuffle(questions);
+            
+            // Umieszczamy potasowane pytania z powrotem w kontenerze
+            questionsContainer.innerHTML = "";
+            questions.forEach(q => {
+                q.style.display = "none";
+                questionsContainer.appendChild(q);
+            });
+            
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                endQuiz();
+                return;
+            }
+
+            // Ukrywamy wszystkie
+            questions.forEach(q => q.style.display = "none");
+            
+            // Pokazujemy bieżące
+            let currentQ = questions[currentQuestionIndex];
+            currentQ.style.display = "block";
+            
+            // Dynamiczna naprawa numeracji przedrostków (żeby było po kolei mimo losowania)
+            let titleElement = currentQ.querySelector('.update-title');
+            if (!titleElement.dataset.originalText) {
+                titleElement.dataset.originalText = titleElement.innerText.replace(/^\d+\.\s*/, '');
+            }
+            titleElement.innerText = `${currentQuestionIndex + 1}. ${titleElement.dataset.originalText}`;
+            
+            progressText.innerHTML = `Pytanie ${currentQuestionIndex + 1}/30`;
+            
+            // Reset paska czasu
+            timeLeft = 20;
+            updateTimerVisuals();
+            
+            // Wyłączenie płynności na moment powrotu paska do 100%
+            timerBar.style.transition = "none";
+            timerBar.style.width = "100%";
+            
+            setTimeout(() => {
+                timerBar.style.transition = "width 1s linear, background-color 0.5s";
+            }, 50);
+            
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerVisuals();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    handleAnswer(null, null); // Koniec czasu
+                }
+            }, 1000);
+
+            // Podpięcie przycisków
+            if (!currentQ.dataset.listenersAdded) {
+                const btns = currentQ.querySelectorAll(".quiz-btn");
+                btns.forEach(btn => {
+                    btn.onclick = function() {
+                        clearInterval(timerInterval);
+                        handleAnswer(parseInt(this.getAttribute("data-index")), parseInt(currentQ.getAttribute("data-correct")));
+                    };
+                });
+                currentQ.dataset.listenersAdded = "true";
+            }
+        }
+
+        function updateTimerVisuals() {
+            let percentage = (timeLeft / 20) * 100;
+            timerBar.style.width = percentage + "%";
+            
+            // Kolorowanie wg progów
+            if (timeLeft > 13) {
+                timerBar.style.backgroundColor = "#4CAF50"; // Zielony
+            } else if (timeLeft > 6) {
+                timerBar.style.backgroundColor = "#FFEB3B"; // Żółty
+            } else {
+                timerBar.style.backgroundColor = "#F44336"; // Czerwony
+            }
+        }
+
+        function handleAnswer(selectedIndex, correctIndex) {
+            if (selectedIndex === correctIndex && selectedIndex !== null) {
+                score++;
+            }
+            currentQuestionIndex++;
+            showQuestion();
+        }
+
+        function endQuiz() {
+            questionScreen.style.display = "none";
+            endScreen.style.display = "block";
+            scoreText.innerText = score;
+        }
+
+        if (startBtn) startBtn.onclick = startQuiz;
+        if (retryBtn) retryBtn.onclick = startQuiz;
+    });
+    </script>
+</div>
