@@ -426,19 +426,22 @@
             
             progressText.innerHTML = `Pytanie ${currentQuestionIndex + 1}/30`;
             
-            // Reset paska czasu
+            // --- NAPRAWA PASKA CZASU ---
+            clearInterval(timerInterval); // Upewniamy się, że nie działają dwa liczniki naraz
             timeLeft = 20;
-            updateTimerVisuals();
             
-            // Wyłączenie płynności na moment powrotu paska do 100%
+            // Natychmiastowe przywrócenie paska do 100% (bez animacji cofania)
             timerBar.style.transition = "none";
             timerBar.style.width = "100%";
+            timerBar.style.backgroundColor = "#4CAF50";
             
-            setTimeout(() => {
-                timerBar.style.transition = "width 1s linear, background-color 0.5s";
-            }, 50);
+            // WYMUSZENIE REFLOW - to rozwiązuje problem zacinającego się paska w przeglądarkach
+            void timerBar.offsetWidth;
             
-            clearInterval(timerInterval);
+            // Przywrócenie płynności na odliczanie w dół
+            timerBar.style.transition = "width 1s linear, background-color 0.5s";
+            
+            // Uruchomienie odliczania
             timerInterval = setInterval(() => {
                 timeLeft--;
                 updateTimerVisuals();
@@ -448,6 +451,7 @@
                     handleAnswer(null, null); // Koniec czasu
                 }
             }, 1000);
+            // ---------------------------
 
             // Podpięcie przycisków
             if (!currentQ.dataset.listenersAdded) {
