@@ -33,11 +33,9 @@
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
-            /* Płynne przejście przy zmianie motywu */
             transition: background 0.4s ease, color 0.4s ease;
         }
 
-        /* Nagłówek strony */
         header {
             width: 100%;
             background: #ffffff;
@@ -56,10 +54,10 @@
             gap: 15px;
         }
 
-        /* Kontener na tytuł i licznik */
         .title-container {
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
         }
 
         .header-content h1 {
@@ -71,12 +69,21 @@
             transition: color 0.4s ease;
         }
 
-        /* Licznik odliczający czas */
+        .schedule-info {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: -2px;
+            margin-top: 4px;
+        }
+
         .countdown-timer {
             font-size: 13px;
             color: var(--primary-color);
             font-weight: 700;
-            margin-top: 8px;
+            margin-top: 5px;
             padding: 6px 14px;
             background: linear-gradient(135deg, rgba(220, 53, 69, 0.05), rgba(220, 53, 69, 0.15));
             border: 1px solid rgba(220, 53, 69, 0.3);
@@ -85,6 +92,7 @@
             box-shadow: 0 4px 10px rgba(220, 53, 69, 0.08);
             letter-spacing: 0.5px;
             text-align: center;
+            font-variant-numeric: tabular-nums; 
         }
 
         .flag-container {
@@ -99,17 +107,9 @@
             transition: border-color 0.4s ease;
         }
 
-        .flag-top {
-            background-color: #fff;
-            flex: 1;
-        }
+        .flag-top { background-color: #fff; flex: 1; }
+        .flag-bottom { background-color: #dc3545; flex: 1; }
 
-        .flag-bottom {
-            background-color: #dc3545;
-            flex: 1;
-        }
-
-        /* Główny kontener */
         main {
             max-width: 800px;
             width: 100%;
@@ -122,7 +122,7 @@
 
         .welcome-section {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .welcome-section h2 {
@@ -132,7 +132,34 @@
             margin-bottom: 10px;
         }
 
-        /* Zakładka / Przycisk do otwierania */
+        /* --- Zmodyfikowana struktura kategorii (Gry / Update) --- */
+        .category-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .category-header {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .tab-trigger {
             background: var(--card-bg);
             border: none;
@@ -148,6 +175,8 @@
             color: #111;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 2px solid transparent;
+            min-width: 250px;
+            justify-content: center;
         }
 
         .tab-trigger:hover {
@@ -161,13 +190,10 @@
             transition: transform 0.3s ease;
         }
 
-        /* Okno modalne */
+        /* Modal */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(8px);
             display: flex;
@@ -180,10 +206,7 @@
             padding: 20px;
         }
 
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
         .modal-window {
             background: var(--card-bg);
@@ -199,11 +222,8 @@
             overflow: hidden;
         }
 
-        .modal-overlay.active .modal-window {
-            transform: scale(1) translateY(0);
-        }
+        .modal-overlay.active .modal-window { transform: scale(1) translateY(0); }
 
-        /* Nagłówek Okienka */
         .modal-header {
             padding: 25px 30px;
             background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
@@ -227,8 +247,7 @@
             background: rgba(255, 255, 255, 0.1);
             border: none;
             color: white;
-            width: 36px;
-            height: 36px;
+            width: 36px; height: 36px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -243,7 +262,6 @@
             transform: rotate(90deg);
         }
 
-        /* Zawartość Okienka (Scrollowalna) */
         .modal-body {
             padding: 30px;
             overflow-y: auto;
@@ -251,7 +269,6 @@
             transition: background 0.4s ease;
         }
 
-        /* Style dla załadowanych z Update1.html aktualizacji */
         .update-item {
             background: #ffffff;
             border-radius: 16px;
@@ -278,16 +295,19 @@
             height: 180px;
             border-radius: 12px;
             margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             position: relative;
             overflow: hidden;
             box-shadow: inset 0 0 40px rgba(0,0,0,0.2);
+            background-color: #eee;
         }
 
-        /* Twoje oryginalne zdjęcia */
+        .thematic-image::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.1);
+        }
+
         .img-1 { background: url('10407.png') center/cover no-repeat; }
         .img-2 { background: url('20407.png') center/cover no-repeat; }
         .img-3 { background: url('30407.png') center/cover no-repeat; }
@@ -307,13 +327,6 @@
         .img-17 { background: url('170407.png') center/cover no-repeat; }
         .img-18 { background: url('180407.png') center/cover no-repeat; }
 
-        .thematic-image::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.1);
-        }
-
         .update-details {
             font-size: 15px;
             line-height: 1.6;
@@ -328,25 +341,64 @@
             gap: 6px;
         }
 
-        .update-details p:last-child {
-            margin-bottom: 0;
+        .update-details p:last-child { margin-bottom: 0; }
+
+        /* --- Style dla Quizu --- */
+        .quiz-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 18px;
         }
 
-        .modal-body::-webkit-scrollbar {
-            width: 8px;
-        }
-        .modal-body::-webkit-scrollbar-track {
-            background: #fafafa;
-        }
-        .modal-body::-webkit-scrollbar-thumb {
-            background: #ccc;
-            border-radius: 4px;
-        }
-        .modal-body::-webkit-scrollbar-thumb:hover {
-            background: #b3b3b3;
+        #quiz-timer {
+            color: var(--primary-color);
+            background: rgba(220, 53, 69, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
         }
 
-        /* Stopka strony */
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .quiz-btn {
+            background: var(--bg-gradient-start);
+            border: 2px solid #e9ecef;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-btn:hover:not(:disabled) {
+            border-color: var(--primary-color);
+            background: rgba(220, 53, 69, 0.05);
+        }
+        
+        .quiz-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 500px) {
+            .quiz-options { grid-template-columns: 1fr; }
+        }
+
+        .modal-body::-webkit-scrollbar { width: 8px; }
+        .modal-body::-webkit-scrollbar-track { background: #fafafa; }
+        .modal-body::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        .modal-body::-webkit-scrollbar-thumb:hover { background: #b3b3b3; }
+
         footer {
             margin-top: auto;
             padding: 20px;
@@ -356,94 +408,57 @@
             width: 100%;
         }
 
-        /* =========================================
-           TRYB CIEMNY (DARK MODE) ORAZ PRZEŁĄCZNIK
-           ========================================= */
-        
-        /* Wygląd estetycznego przełącznika (w prawym górnym rogu nagłówka) */
+        /* --- DARK MODE --- */
         .theme-toggle {
             position: absolute;
-            right: 25px;
-            top: 50%;
+            right: 25px; top: 50%;
             transform: translateY(-50%);
-            width: 64px;
-            height: 32px;
+            width: 64px; height: 32px;
             background: #e9ecef;
             border-radius: 30px;
             cursor: pointer;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            align-items: center; justify-content: space-between;
             padding: 0 6px;
             box-shadow: inset 0 2px 6px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05);
             transition: background 0.4s ease, border-color 0.4s ease;
             border: 1px solid rgba(0,0,0,0.05);
             z-index: 50;
         }
-
-        .theme-toggle .toggle-emoji {
-            font-size: 14px;
-            line-height: 1;
-            z-index: 1;
-            user-select: none;
-        }
-
+        .theme-toggle .toggle-emoji { font-size: 14px; line-height: 1; z-index: 1; user-select: none; }
         .theme-toggle .toggle-ball {
-            position: absolute;
-            left: 4px;
-            width: 24px;
-            height: 24px;
-            background: #ffffff;
-            border-radius: 50%;
+            position: absolute; left: 4px;
+            width: 24px; height: 24px;
+            background: #ffffff; border-radius: 50%;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             z-index: 2;
         }
 
-        /* Mobilny widok przełącznika */
         @media (max-width: 550px) {
-            .theme-toggle {
-                top: 15px;
-                right: 15px;
-                transform: scale(0.85);
-            }
+            .theme-toggle { top: 15px; right: 15px; transform: scale(0.85); }
         }
 
-        /* Główne zmienne i nadpisania gdy Dark Mode jest aktywny */
         body.dark-mode {
-            --bg-gradient-start: #121212;
-            --bg-gradient-end: #1e1e1e;
-            --card-bg: #2a2a2a;
-            --text-main: #f1f1f1;
-            --text-muted: #a0a0a0;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --bg-gradient-start: #121212; --bg-gradient-end: #1e1e1e;
+            --card-bg: #2a2a2a; --text-main: #f1f1f1;
+            --text-muted: #a0a0a0; --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-
-        /* Elementy statyczne */
         body.dark-mode header { background: #1a1a1a; box-shadow: 0 2px 10px rgba(0,0,0,0.4); }
         body.dark-mode .header-content h1 { color: #f1f1f1; }
         body.dark-mode .flag-container { border-color: #333; }
+        body.dark-mode .category-header { color: #f1f1f1; border-color: var(--primary-color); }
         body.dark-mode .tab-trigger { color: #f1f1f1; }
         body.dark-mode .modal-body { background: #1a1a1a; }
         body.dark-mode .modal-body::-webkit-scrollbar-track { background: #1a1a1a; }
         body.dark-mode .modal-body::-webkit-scrollbar-thumb { background: #444; }
-
-        /* Elementy dynamiczne ładujące się z zewnętrznego pliku (Update1.html) */
         body.dark-mode .update-item { background: #242424; border-color: #333; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
         body.dark-mode .update-title { color: #f1f1f1; }
         body.dark-mode .update-details { color: #b3b3b3; }
-
-        /* Zmiana wyglądu samego przełącznika gdy jest ciemno */
-        body.dark-mode .theme-toggle {
-            background: #3a3a3a;
-            border-color: rgba(255,255,255,0.1);
-            box-shadow: inset 0 2px 6px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
-        }
-        body.dark-mode .theme-toggle .toggle-ball {
-            transform: translateX(32px);
-            background: #1a1a1a;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.6), inset 0 0 2px rgba(255,255,255,0.2);
-        }
+        body.dark-mode .quiz-btn { border-color: #444; color: #f1f1f1; background: #2a2a2a; }
+        
+        body.dark-mode .theme-toggle { background: #3a3a3a; border-color: rgba(255,255,255,0.1); box-shadow: inset 0 2px 6px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3); }
+        body.dark-mode .theme-toggle .toggle-ball { transform: translateX(32px); background: #1a1a1a; box-shadow: 0 2px 5px rgba(0,0,0,0.6), inset 0 0 2px rgba(255,255,255,0.2); }
     </style>
 </head>
 <body>
@@ -456,11 +471,11 @@
             </div>
             <div class="title-container">
                 <h1>Polish Update</h1>
+                <div class="schedule-info">Aktualizacje: Wtorek, Czwartek i Sobota</div>
                 <div id="countdown" class="countdown-timer">Ładowanie licznika...</div>
             </div>
         </div>
 
-        <!-- Nowy Przełącznik Dark Mode -->
         <div class="theme-toggle" id="themeToggle" title="Zmień motyw">
             <span class="toggle-emoji">☀️</span>
             <span class="toggle-emoji">🌙</span>
@@ -471,19 +486,34 @@
     <main>
         <div class="welcome-section">
             <h2>Witaj na oficjalnej platformie patchy rzeczywistości</h2>
-            <p style="color: var(--text-muted);">Kliknij poniższą zakładkę, aby zobaczyć najnowsze zmiany.</p>
+            <p style="color: var(--text-muted);">Wybierz odpowiednią zakładkę poniżej.</p>
         </div>
 
-        <button class="tab-trigger" id="openModalBtn" data-file="Update1.html">
-            <span class="icon">📅</span>
-            <span>4 Lipca 2026</span>
-        </button>
+        <div class="category-section">
+            <h3 class="category-header">Gry</h3>
+            <div class="tabs-container">
+                <button class="tab-trigger open-modal-btn" data-file="Quiz.html" data-title="🎮 GRY – QUIZ O POLSCE 🇵🇱">
+                    <span class="icon">🎮</span>
+                    <span>Quiz o Polsce</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <h3 class="category-header">Update</h3>
+            <div class="tabs-container">
+                <button class="tab-trigger open-modal-btn" data-file="Update1.html" data-title="🇵🇱 POLISH UPDATE – 4 LIPCA 2026 ☀️">
+                    <span class="icon">📅</span>
+                    <span>4 Lipca 2026</span>
+                </button>
+            </div>
+        </div>
     </main>
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-window">
             <div class="modal-header">
-                <h2 id="modalTitle">🇵🇱 POLISH UPDATE – 4 LIPCA 2026 ☀️</h2>
+                <h2 id="modalTitle">Ładowanie...</h2>
                 <button class="close-btn" id="closeModalBtn">&times;</button>
             </div>
             <div class="modal-body" id="modalBodyContent"></div>
@@ -495,35 +525,23 @@
     </footer>
 
     <script>
-        // Czekamy aż cała strona się załaduje, by uniknąć błędów
         document.addEventListener("DOMContentLoaded", () => {
             
-            // --- DARK MODE LOGIKA ---
+            // --- DARK MODE ---
             const themeToggle = document.getElementById('themeToggle');
             const body = document.body;
+            if (localStorage.getItem('theme') === 'dark') { body.classList.add('dark-mode'); }
 
-            // Sprawdzanie czy użytkownik miał już włączony tryb ciemny w przeglądarce
-            if (localStorage.getItem('theme') === 'dark') {
-                body.classList.add('dark-mode');
-            }
-
-            // Kliknięcie w przełącznik
             if (themeToggle) {
                 themeToggle.addEventListener('click', () => {
                     body.classList.toggle('dark-mode');
-                    if (body.classList.contains('dark-mode')) {
-                        localStorage.setItem('theme', 'dark');
-                    } else {
-                        localStorage.setItem('theme', 'light');
-                    }
+                    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
                 });
             }
 
             // --- LICZNIK ---
             const countdownElement = document.getElementById("countdown");
-            
-            // Zmieniony format ISO - rozwiązuje problem niedziałającego skryptu na telefonach!
-            const countDownDate = new Date("2026-07-11T00:00:00").getTime();
+            const countDownDate = new Date("2026-07-07T10:00:00").getTime();
 
             function updateTimer() {
                 const now = new Date().getTime();
@@ -538,73 +556,191 @@
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                const milliseconds = Math.floor(distance % 1000).toString().padStart(3, '0');
 
-                countdownElement.innerHTML = "Do Kolejnego Update: " + days + " dni " + hours + " godz. " + minutes + " min. " + seconds + " sek.";
+                countdownElement.innerHTML = "Do Kolejnego Update: " + days + " dni " + hours + " godz. " + minutes + " min. " + seconds + " sek. " + milliseconds + " ms";
                 return false;
             }
 
-            // Uruchomienie licznika od razu (nie czeka sekundy na odświeżenie)
             if (countdownElement) {
                 const isFinished = updateTimer();
-                if (!isFinished) {
-                    setInterval(updateTimer, 1000);
-                }
+                if (!isFinished) setInterval(updateTimer, 10);
             }
 
-            // --- OTWIERANIE ZAKŁADEK (MODAL) ---
-            const openModalBtn = document.getElementById('openModalBtn');
+            // --- SYSTEM ZAKŁADEK (MODAL) ---
+            const openModalBtns = document.querySelectorAll('.open-modal-btn');
             const closeModalBtn = document.getElementById('closeModalBtn');
             const modalOverlay = document.getElementById('modalOverlay');
             const modalBodyContent = document.getElementById('modalBodyContent');
+            const modalTitle = document.getElementById('modalTitle');
 
-            if (openModalBtn && modalOverlay && modalBodyContent) {
-                openModalBtn.addEventListener('click', function() {
+            let currentLoadedFile = '';
+
+            // --- ZMIENNE DO LOGIKI QUIZU ---
+            let quizCurrentIndex = 0;
+            let quizScore = 0;
+            let quizTimer = 15;
+            let quizInterval = null;
+            let quizQuestions = [];
+
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const fileToLoad = this.getAttribute('data-file');
+                    const titleText = this.getAttribute('data-title');
                     
+                    modalTitle.innerText = titleText;
                     modalOverlay.classList.add('active');
                     document.body.style.overflow = 'hidden'; 
-                    
-                    const fileToLoad = this.getAttribute('data-file');
 
-                    // Sprawdzamy czy zawartość jest pusta. Jak tak, pobieramy
-                    if (modalBodyContent.innerHTML.trim() === '') {
-                        modalBodyContent.innerHTML = '<p style="text-align:center; padding: 30px; font-weight:bold;">Trwa pobieranie łatki...</p>';
+                    if (currentLoadedFile !== fileToLoad) {
+                        modalBodyContent.innerHTML = '<p style="text-align:center; padding: 30px; font-weight:bold;">Trwa pobieranie danych...</p>';
                         
                         fetch(fileToLoad)
                             .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Błąd pliku: ' + response.status);
-                                }
+                                if (!response.ok) throw new Error('Błąd pliku: ' + response.status);
                                 return response.text();
                             })
                             .then(data => {
                                 modalBodyContent.innerHTML = data;
+                                currentLoadedFile = fileToLoad;
+                                // Zatrzymujemy ew. stary timer jak zmieniono okno
+                                clearInterval(quizInterval);
                             })
                             .catch(error => {
-                                modalBodyContent.innerHTML = '<p style="text-align:center; padding: 30px; color:red;">Nie udało się załadować danych z pliku ' + fileToLoad + '. Upewnij się, że plik na GitHubie ma dokładnie taką samą nazwę (duża litera "U" ma znaczenie!).</p>';
+                                modalBodyContent.innerHTML = '<p style="text-align:center; padding: 30px; color:red;">Nie udało się załadować danych z pliku ' + fileToLoad + '. Utwórz ten plik w folderze na Githubie!</p>';
+                                currentLoadedFile = ''; 
                                 console.error('Błąd fetch:', error);
                             });
                     }
                 });
+            });
+
+            // Zamykanie modala
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = ''; 
+                clearInterval(quizInterval); // zatrzymaj timer jak zamknieto quiz w trakcie
             }
 
-            // Zamykanie okienka
-            if (closeModalBtn) {
-                closeModalBtn.addEventListener('click', () => {
-                    modalOverlay.classList.remove('active');
-                    document.body.style.overflow = ''; 
-                });
-            }
-
-            // Zamknięcie po kliknięciu w tło
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
             if (modalOverlay) {
                 modalOverlay.addEventListener('click', (e) => {
-                    if (e.target === modalOverlay) {
-                        modalOverlay.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
+                    if (e.target === modalOverlay) closeModal();
                 });
             }
-            
+
+            // --- SILNIK QUIZU (Event Delegation w ciele modala) ---
+            modalBodyContent.addEventListener('click', function(e) {
+                
+                // Rozpoczęcie / Restart quizu
+                if (e.target.id === 'start-quiz-btn' || e.target.id === 'retry-quiz-btn') {
+                    quizQuestions = document.querySelectorAll('.quiz-question-item');
+                    if(quizQuestions.length === 0) return;
+                    
+                    quizCurrentIndex = 0;
+                    quizScore = 0;
+                    document.getElementById('quiz-start-screen').style.display = 'none';
+                    if (document.getElementById('quiz-end-screen')) document.getElementById('quiz-end-screen').style.display = 'none';
+                    document.getElementById('quiz-question-screen').style.display = 'block';
+                    
+                    showQuestion(quizCurrentIndex);
+                }
+
+                // Kliknięcie odpowiedzi (A, B, C, D)
+                if (e.target.classList.contains('quiz-btn')) {
+                    clearInterval(quizInterval);
+                    const btn = e.target;
+                    const questionDiv = quizQuestions[quizCurrentIndex];
+                    const correctIndex = questionDiv.getAttribute('data-correct');
+                    const selectedIndex = btn.getAttribute('data-index');
+                    
+                    const allBtns = questionDiv.querySelectorAll('.quiz-btn');
+                    allBtns.forEach(b => b.disabled = true); 
+                    
+                    // Kolorujemy odpowiedź
+                    if (selectedIndex === correctIndex) {
+                        btn.style.backgroundColor = 'rgba(40, 167, 69, 0.2)'; 
+                        btn.style.borderColor = '#28a745';
+                        quizScore++;
+                    } else {
+                        btn.style.backgroundColor = 'rgba(220, 53, 69, 0.2)'; 
+                        btn.style.borderColor = '#dc3545';
+                        // Pokazujemy prawidłową odpowiedź
+                        allBtns.forEach(b => {
+                            if (b.getAttribute('data-index') === correctIndex) {
+                                b.style.backgroundColor = 'rgba(40, 167, 69, 0.2)';
+                                b.style.borderColor = '#28a745';
+                            }
+                        });
+                    }
+                    
+                    setTimeout(() => {
+                        quizCurrentIndex++;
+                        if (quizCurrentIndex < quizQuestions.length) {
+                            showQuestion(quizCurrentIndex);
+                        } else {
+                            endQuiz();
+                        }
+                    }, 2000); // 2 sekundy pauzy, żeby zobaczyć poprawną odpowiedź
+                }
+            });
+
+            function showQuestion(index) {
+                quizQuestions.forEach((q, i) => {
+                    q.style.display = (i === index) ? 'block' : 'none';
+                    // Resetowanie przycisków przed pokazaniem
+                    const btns = q.querySelectorAll('.quiz-btn');
+                    btns.forEach(btn => {
+                        btn.style.backgroundColor = '';
+                        btn.style.borderColor = '';
+                        btn.disabled = false;
+                    });
+                });
+                
+                document.getElementById('quiz-progress').innerText = `Pytanie ${index + 1}/${quizQuestions.length}`;
+                quizTimer = 15; // Zresetowanie czasu na pytanie
+                document.getElementById('quiz-timer').innerText = `Czas: ${quizTimer}s`;
+                
+                clearInterval(quizInterval);
+                quizInterval = setInterval(() => {
+                    quizTimer--;
+                    document.getElementById('quiz-timer').innerText = `Czas: ${quizTimer}s`;
+                    
+                    if (quizTimer <= 0) {
+                        clearInterval(quizInterval);
+                        handleTimeOut();
+                    }
+                }, 1000);
+            }
+
+            function handleTimeOut() {
+                const questionDiv = quizQuestions[quizCurrentIndex];
+                const correctIndex = questionDiv.getAttribute('data-correct');
+                const allBtns = questionDiv.querySelectorAll('.quiz-btn');
+                
+                allBtns.forEach(b => {
+                    b.disabled = true;
+                    if (b.getAttribute('data-index') === correctIndex) {
+                        b.style.backgroundColor = 'rgba(40, 167, 69, 0.2)'; 
+                        b.style.borderColor = '#28a745';
+                    }
+                });
+
+                setTimeout(() => {
+                    quizCurrentIndex++;
+                    if (quizCurrentIndex < quizQuestions.length) {
+                        showQuestion(quizCurrentIndex);
+                    } else {
+                        endQuiz();
+                    }
+                }, 2000);
+            }
+
+            function endQuiz() {
+                document.getElementById('quiz-question-screen').style.display = 'none';
+                document.getElementById('quiz-end-screen').style.display = 'block';
+                document.getElementById('quiz-score').innerText = quizScore;
+            }
         });
     </script>
 </body>
